@@ -1,0 +1,33 @@
+16.04.2008, Version 0.8.8 beta
+- New design.
+- Added the possibility to change the public/private status on multiple
+  bookmarks.
+- Added the possibility to mark bookmarks and folders public/private
+  when importing them.
+
+20.04.2008, Version 0.8.9 beta
+- Added the possibility to either convert favicon using ImageMagick or
+  leave them in the ICO format. Updating favicon.php and install.php
+  accordingly.
+
+04.05.2008, Version 0.8.10 beta
+- Changed the "select folder" link to a button in bookmark_edit.php and bookmark_new.php.
+- Fixed HTML encoded strings when importing bookmarks in Netscape format.
+- Fixed some typos in index.php and added the "My Bookmarks" link in search mode.
+
+17.05.2008, Version 0.8.11_beta
+- Added a link to use Online-Bookmarks as a real Firefox Sidebar. Many thanks to Adam Patterson.
+- You can find the link "Change Password" under "Settings" from now on.
+- Added completelly new search lib. Many thanks to John-Paul Durrieu as well for other
+  hints and suggestions.
+
+22.07.2008, Version 0.8.12_beta
+- Changed the look of the menu headers
+- Changed the look of the footer
+- Added sort by Title and Date to bookmarks header
+
+01.08.2008, Version 0.8.13_beta
+- Adjusted order function so that arrow changes direction when changing order.
+
+12.08.2008, Version 0.8.14_beta
+- Getting rid of dangeros $GLOBALS in export.php, import.php and folders.php.

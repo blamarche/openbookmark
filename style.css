@@ -1,0 +1,202 @@
+/* General Settings */
+* {
+	color: #444;
+	font-family: Verdana, Georgia, Times, serif;
+	font-size: 10pt;
+}
+body {
+	background-color: white;
+	margin: 0;
+	padding: 5px;
+}
+img {
+	border: 0px solid #FFFFFF;
+	vertical-align: middle;
+	margin: 0px;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+	color: #AE1A1A;
+}
+a:active {
+	text-decoration: none;
+}
+fieldset {
+	margin: 10px;
+	float: none;
+}
+/* Caption */
+h1#caption {
+	font-size: 15pt;
+	margin: 0 0 0.5em;
+	padding: 10px;
+	text-align: center;
+	font-family: Georgia, Times, serif;
+	background-color:#bbb;
+}
+h2.caption {
+	font-weight:bold;
+	margin: 5px;
+}
+
+/* Menu and navigation */
+div#menu {
+	font-size: 9pt;
+	float: left;
+	width: 130px;
+	margin: 0px;
+	padding: 0;
+	margin-bottom: 10px;
+}
+h2.nav {
+	font-size: 10pt;
+	margin: 0;
+	padding: 3px;
+	/* background-color:#bbb; */
+	background: url(images/grad.png) repeat-x;
+}
+ul.nav {
+	border: 1px solid #bbb;
+	margin: 0px 0px 10px 0px;
+	padding: 0;
+}
+ul.nav li {
+	list-style: none;
+	margin: 0;
+	padding: 1px;
+}
+ul.nav a {
+	display: block;
+	padding: 2px;
+	font-size: 9pt;
+}
+ul.nav a:link {
+	text-decoration: none;
+}
+ul.nav a:visited {
+	text-decoration: none;
+}
+ul.nav a:hover {
+	text-decoration: none;
+	/* color: #AE1A1A; */
+	color: #555555;
+	background-color: #ddd;
+}
+ul.nav a:active {
+	text-decoration: none;
+}
+form.nav {
+	margin: 0px;
+}
+
+/* Folders section */
+div.folders {
+	float: left;
+	overflow: auto;
+}
+a.f:link {
+	text-decoration: none;
+	color: #555555;
+}
+a.f:visited {
+	text-decoration: none;
+	color: #555555;
+}
+a.f:hover {
+	text-decoration: none;
+	color: #555555;
+}
+a.f:active {
+	text-decoration: none;
+	color: #555555;
+}
+span.active {
+	color: #000000;
+	background-color: #C1D2EE;
+	border:1px #316AC5 solid;
+	padding:1px;
+}
+div.foldertop {
+	height: 5px;
+}
+
+/* Bookmarks section */
+div.bookmarks {
+	overflow:auto;
+	padding: 0px;
+	display: block;
+	border-left: 1px solid #bbb;
+}
+div.bookmark {
+	border-bottom: 1px solid #bbb;
+	padding: 4px;
+}
+div.bookmarkcaption {
+	padding: 2px 2px 2px 4px;
+	/* background-color: #bbb; */
+	background: url(images/grad.png) repeat-x;
+}
+div.bookmark:hover {
+	background-color: #eee;
+}
+div.bmleft {
+	float: left;
+	padding-right: 5px;
+}
+div.bmright {
+	float: right;
+	margin-left: 10px;
+	padding: 0px;
+	margin: 0px;
+	text-align: center;
+}
+div.link {
+	padding: 0px 0px 2px;
+}
+span.private {
+	background-color: #E7FBE9;
+	color: #177F23;
+}
+span.public {
+	background-color: #F9E7E9;
+	color: #E42037;
+}
+div.description {
+	margin-top: 5px;
+}
+div.description, span.private, span.public, span.date, a.footer {
+	font-size: smaller;
+}
+.invisible {
+	visibility: hidden;
+}
+p.shared {
+	margin: 10px;
+}
+
+/* Main Content */
+div#main {
+	margin-left: 140px;
+	border: 1px solid #bbb;
+	margin-bottom: 10px;
+}
+div#content {
+	overflow:auto;
+	padding: 0px;
+	display: block;
+}
+
+/* Footer */
+div#footer {
+	clear: both;
+	margin-top: 10px;
+	padding: 2px;
+	font-size: smaller;
+	font-style:italic;
+}
