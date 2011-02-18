@@ -4,6 +4,8 @@ function is_mobile_browser(){
 	$device = false;
 	if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
 		$device = true;
+	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'ipod') || strstr($_SERVER['HTTP_USER_AGENT'],'ipod') ) {
+		$device = true;
 	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
 		$device = true;
 	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'blackberry') ) {
