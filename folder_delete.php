@@ -11,7 +11,7 @@ if ($folderid == "" || $folderid == 0){
 else if (!$settings['confirm_delete'] || $noconfirm) {
 	# lets do the deletion if the confirm variable is set to FALSE or after confirmation
 	require_once (ABSOLUTE_PATH . "folders.php");
-	$tree = & new folder;
+	$tree = new folder;
 	$tree->get_children ($folderid);
 
 	# we need $parent_folders for javascript code below.

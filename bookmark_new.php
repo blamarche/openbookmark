@@ -13,7 +13,7 @@ $post_childof		= set_post_childof ();
 $post_public		= set_post_bool_var ("public", false);
 
 require_once (ABSOLUTE_PATH . "folders.php");
-$tree = & new folder;
+$tree = new folder;
 $query_string = "?expand=" . implode(",", $tree->get_path_to_root ($post_childof)) . "&amp;folderid=" . $post_childof;
 
 if ($post_title == '' || $post_url == '') {
@@ -91,7 +91,7 @@ else {
 	# favicon is not that important.
 	if ($settings['show_bookmark_icon']) {
 		require_once (ABSOLUTE_PATH . "favicon.php");
-		$favicon = & new favicon ($post_url);
+		$favicon = new favicon ($post_url);
 		if (isset ($favicon->favicon)) {
 			$query = sprintf ("UPDATE bookmark set favicon='%s' WHERE user='%s' AND id='%d'", 
 				$mysql->escape ($favicon->favicon),

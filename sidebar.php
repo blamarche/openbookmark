@@ -3,9 +3,9 @@ define ("ABSOLUTE_PATH", dirname (__FILE__) . "/");
 require_once (ABSOLUTE_PATH . "lib/webstart.php");
 require_once (ABSOLUTE_PATH . "config/config.php");
 require_once (ABSOLUTE_PATH . "lib/mysql.php");
-$mysql = & new mysql;
+$mysql = new mysql;
 require_once (ABSOLUTE_PATH . "lib/auth.php");
-$auth = & new Auth;
+$auth = new Auth;
 require_once (ABSOLUTE_PATH . "lib/lib.php");
 require_once (ABSOLUTE_PATH . "lib/login.php");
 
@@ -13,7 +13,7 @@ class sidebar {
         function sidebar () {
                 # collect the folder data
                 require_once (ABSOLUTE_PATH . "folders.php");
-                $this->tree = & new folder;
+                $this->tree = new folder;
                 $this->tree->folders[0] = array ('id' => 0, 'childof' => null, 'name' => $GLOBALS['settings']['root_folder_name']);
 
                 global $username, $mysql;
@@ -146,7 +146,7 @@ class sidebar {
 
 logged_in_only ();
 
-$sidebar = & new sidebar;
+$sidebar = new sidebar;
 
 echo '<ul id="browser" class="dir">' . "\n";
 $sidebar->make_tree (0);

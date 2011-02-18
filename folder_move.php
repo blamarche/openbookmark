@@ -4,7 +4,7 @@ logged_in_only ();
 require_once (ABSOLUTE_PATH . "folders.php");
 
 $sourcefolder	= set_post_sourcefolder ();
-$tree			= & new folder;
+$tree			= new folder;
 $parents		= $tree->get_path_to_root ($folderid);
 
 if ($sourcefolder == "") {

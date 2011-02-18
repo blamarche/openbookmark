@@ -9,7 +9,7 @@ logged_in_only ();
 
 				<?php
 				require_once ('./folders.php');
-				$tree = & new folder;
+				$tree = new folder;
 				$tree->make_tree (0);
 				$tree->print_tree ();
 				$path = $tree->print_path ($folderid);

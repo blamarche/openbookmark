@@ -37,7 +37,7 @@ logged_in_only ();
 
 if (!isset ($_FILES['importfile']['tmp_name']) || $_FILES['importfile']['tmp_name'] == null){
 	# get the browser type for default setting below if possible
-	if( eregi ("opera", $_SERVER['HTTP_USER_AGENT'])){
+	if( preg_match ("/opera/i", $_SERVER['HTTP_USER_AGENT'])){
 		$default_browser = "opera";
 	}
 	else{
@@ -99,11 +99,11 @@ if (!isset ($_FILES['importfile']['tmp_name']) || $_FILES['importfile']['tmp_nam
 	        Destination Folder:
 	      </td>
 	      <td>
-	    <div style="width:<?php echo $column_width_folder; ?>; height:350px; overflow:auto;">
+	    <div style="width:<?php echo (($column_width_folder == 0) ? "auto" : $column_width_folder); ?>; height:350px; overflow:auto;">
 	
 		<?php
 		require_once (ABSOLUTE_PATH . "folders.php");
-		$tree = & new folder;
+		$tree = new folder;
 		$tree->make_tree (0);
 		$tree->print_tree ();
 		?>
@@ -134,7 +134,7 @@ else{
 	}
 
 	$parentfolder = set_post_parentfolder ();
-	$import = & new import;
+	$import = new import;
 
 	if ($_POST['browser'] == "opera") {
 		$import->import_opera ();
@@ -238,22 +238,22 @@ class import {
 			$line = html_entity_decode ($line, ENT_QUOTES, $this->charset);
 
 			# a folder has been found
-			if (ereg ("<DT><H3", $line)) {
-				$this->name_folder = input_validation (ereg_replace ("^( *<DT><[^>]*>)([^<]*)(.*)", "\\2", $line), $this->charset);
+			if (preg_match ("/<DT><H3/", $line)) {
+				$this->name_folder = input_validation (preg_replace ("/^( *<DT><[^>]*>)([^<]*)(.*)/", "\\2", $line), $this->charset);
 				$this->folder_new ();
 			}
 			# a bookmark has been found
-			else if (ereg("<DT><A", $line)){
-				$this->name_bookmark = input_validation (ereg_replace ("^( *<DT><[^>]*>)([^<]*)(.*)", "\\2", $line), $this->charset);
-				$this->url = input_validation (ereg_replace ("([^H]*HREF=\")([^\"]*)(\".*)", "\\2", $line), $this->charset);
+			else if (preg_match("/<DT><A/", $line)){
+				$this->name_bookmark = input_validation (preg_replace ("/^( *<DT><[^>]*>)([^<]*)(.*)/", "\\2", $line), $this->charset);
+				$this->url = input_validation (preg_replace ("/([^H]*HREF=\")([^\"]*)(\".*)/", "\\2", $line), $this->charset);
 				$this->bookmark_new ();
 				$insert_id = mysql_insert_id ();
 			}
 			# this is a description. it is only being saved
 			# if a bookmark has been saved previously
-			else if (ereg("<DD>*", $line)) {
+			else if (preg_match("/<DD>*/", $line)) {
 				if (isset ($insert_id)) {
-					$this->description = input_validation (ereg_replace ("^( *<DD>)(.*)", "\\2", $line), $this->charset);
+					$this->description = input_validation (preg_replace ("/^( *<DD>)(.*)/", "\\2", $line), $this->charset);
 					$query = sprintf ("UPDATE bookmark SET description='%s' WHERE id='%d' and user='%s'",
 						$this->mysql->escape ($this->description),
 						$this->mysql->escape ($insert_id),

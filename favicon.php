@@ -112,7 +112,7 @@ class favicon {
 			fwrite ($socket, "HEAD /favicon.ico HTTP/1.0\r\nHost: " . $this->parsed_url['host'] . "\r\n\r\n");
 			$http_response = fgets ($socket, 22);
 			fclose ($socket);
-			if (ereg ("200 OK", $http_response)) {
+			if (preg_match ("/200 OK/", $http_response)) {
 				#echo "favicon found in document root\n";
 				return $this->parsed_url['scheme'] . "://" . $this->parsed_url['host'] . ":" . $this->parsed_url['port'] . "/favicon.ico";
 			}

@@ -73,6 +73,7 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 			echo "\t\t\t" . '<span class="date">' . "\n";
 			echo "\t\t\t\t" . '<a href="' . $scriptname . '?' . $query_string . '" class="f blink">Date ' . $img_d . '</a>' . "\n";
 			echo "\t\t\t" . '</span>' . "\n";
+			
 			if ($show_edit) {
 				echo "\t\t\t" . '<img src="./images/edit.gif"   alt="" class="invisible">' . "\n";
 			}
@@ -91,6 +92,7 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 		$query_data ['order'] = $sort_t;
 		$query_string = assemble_query_string ($query_data);
 		echo "\t\t\t" . '<a href="' . $scriptname . '?' . $query_string . '" class="f blink">Title ' . $img_t . '</a>' . "\n";
+		echo '<a style="font-weight:800;float:right; margin-right: 60px;" href="javascript:openAll();">[Open All]</a>';
 		echo "\t\t" . '</div>' . "\n";
 		echo "\t" . '</div>' . "\n\n";
 	}
@@ -98,7 +100,7 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 
 	if ($show_folder) {
 		require_once (ABSOLUTE_PATH . "folders.php");
-		$tree = & new folder;
+		$tree = new folder;
 	}
 
 	echo '<form name="bookmarks" action="" class="nav">' . "\n";
@@ -190,7 +192,7 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 		}
 
 		if ($show_link){
-			$link = '<a href="' . $value['url'] . '" title="' . $value['url'] . '"' . $target . '>' . $value['title'] . "</a>";
+			$link = '<a class="bookmark_href" href="' . $value['url'] . '" title="' . $value['url'] . '"' . $target . '>' . $value['title'] . "</a>";
 		}
 		else {
 			$link = $value['title'];

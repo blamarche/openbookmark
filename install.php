@@ -7,7 +7,7 @@ require_once (ABSOLUTE_PATH . "lib/lib.php");
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-		<title>Online-Bookmarks</title>
+		<title>OpenBookmark</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	</head>
 <body>
@@ -32,8 +32,8 @@ $submit = set_post_bool_var ('submit', false);
 
 $admin_message = '';
 
-if (intval(str_replace('.', '', phpversion())) < 430) {
-	print_msg ('You are running PHP version '.PHP_VERSION.'. Online-Bookmarks requires at least PHP 4.3.0 to run properly. You must upgrade your PHP installation before you can continue.', "error");
+if (intval(str_replace('.', '', phpversion())) < 500) {
+	print_msg ('You are running PHP version '.PHP_VERSION.'. This requires at least PHP 5.2.0 + MySQL 5 to run properly. You must upgrade your PHP installation before you can continue.', "error");
 }
 
 ############## database control ##############
@@ -45,7 +45,7 @@ function create_table_bookmark () {
 			url char(200) NOT NULL default '',
 			description mediumtext default NULL,
 			private enum('0','1') default NULL,
-			date timestamp(14) NOT NULL,
+			date timestamp NOT NULL,
 			childof int(11) NOT NULL default '0',
 			id int(11) NOT NULL auto_increment,
 			deleted enum('0','1') NOT NULL default '0',
@@ -53,7 +53,7 @@ function create_table_bookmark () {
 			public enum('0','1') NOT NULL default '0',
 			PRIMARY KEY (id),
 			FULLTEXT KEY title (title,url,description)
-		) TYPE=MyISAM";
+		) ENGINE=MyISAM";
 
 	if (mysql_query ($query)) {
 		return true;
@@ -72,7 +72,7 @@ function create_table_folder () {
 			deleted enum('0','1') NOT NULL default '0',
 			public enum('0','1') NOT NULL default '0',
 			UNIQUE KEY id (id)
-		) TYPE=MyISAM;";
+		) ENGINE=MyISAM;";
 
 	if (mysql_query ($query)) {
 		return true;
@@ -89,9 +89,9 @@ function create_table_user () {
 			admin enum('0','1') NOT NULL default '0',
 			language char(20) NOT NULL default '',
 			root_folder_name char(50) NOT NULL default 'My Bookmarks',
-			column_width_folder smallint(3) NOT NULL default '400',
+			column_width_folder smallint(3) NOT NULL default '0',
 			column_width_bookmark smallint(3) NOT NULL default '0',
-			table_height smallint(3) NOT NULL default '400',
+			table_height smallint(3) NOT NULL default '0',
 			confirm_delete enum('0','1') NOT NULL default '1',
 			open_new_window enum('0','1') NOT NULL default '1',
 			show_bookmark_description enum('0','1') NOT NULL default '1',
@@ -107,7 +107,7 @@ function create_table_user () {
 			simple_tree_mode enum('0','1') NOT NULL default '0',
 			show_public enum('0','1') NOT NULL default '1',
 			UNIQUE KEY id (username)
-		) TYPE=MyISAM;";
+		) ENGINE=MyISAM;";
 
 	if (mysql_query ($query)) {
 		return true;

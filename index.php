@@ -17,6 +17,8 @@ $order = set_get_order ();
 <?php if (!$search_mode): ?>
 <script>
 <!--
+var selected_folder_id = 0;
+
 $(document).ready(function() {
 	//setup collapsing menus
 	$(".mnu").click(function(){
@@ -34,6 +36,8 @@ function setupFolderIntercepts()
 		var url = $(this).attr('href');
 		var folderurl=url.replace('index.php','async_folders.php');
 		var bookmarkurl=url.replace('index.php','async_bookmarks.php');
+		
+		selected_folder_id = $(this).attr("folderid");
 		
 		$(".folders").load(folderurl, setupFolderIntercepts);
 		$(".bookmarks").load(bookmarkurl, setupBookmarkIntercepts);
@@ -53,6 +57,8 @@ function setupBookmarkIntercepts()
 		return false;
 	});
 }
+
+
 
 -->
 </script>
@@ -167,7 +173,7 @@ function setupBookmarkIntercepts()
 
 	<?php
 	require_once (ABSOLUTE_PATH . "folders.php");
-	$tree = & new folder;
+	$tree = new folder;
 	$tree->make_tree (0);
 	$tree->print_tree ();
 	?>

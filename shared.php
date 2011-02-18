@@ -60,11 +60,11 @@ if (isset ($_GET['user']) && check_username ($user)) {
 
 
 	<!-- Folders starts here. -->
-	<div class="folders" style="width: <?php echo $column_width_folder; ?>; height: <?php echo $table_height; ?>;">
+	<div class="folders" style="width: <?php echo (($column_width_folder == 0) ? "auto" : $column_width_folder); ?>; height: <?php echo $table_height; ?>;">
 
 	<?php
 	require_once (ABSOLUTE_PATH . "folders.php");
-	$tree = & new folder ($user);
+	$tree = new folder ($user);
 	$tree->make_tree (0);
 	$tree->print_tree ();
 	?>

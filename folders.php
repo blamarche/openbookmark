@@ -226,7 +226,7 @@ class folder {
 					$folderid = $this->folderid;
 				}
 				# this prints the symbol (plus or minus) with its appropriate link
-				echo '<a class="f flink" href="' . $scriptname . '?expand=' . implode(",", $expand_s);
+				echo '<a folderid="'.$folderid.'" class="f flink" href="' . $scriptname . '?expand=' . implode(",", $expand_s);
 				echo '&amp;folderid=' . $folderid  . $user_var . $ankor . '">' . $symbol . '</a>';
 			}
 			else {
@@ -236,7 +236,7 @@ class folder {
 			}
 
 			# this prints the folder name with its appropriate link
-			echo '<a class="f flink" href="' . $scriptname . '?expand=' . implode(",", $expand_f);
+			echo '<a folderid="'.$value['id'].'" class="f flink" href="' . $scriptname . '?expand=' . implode(",", $expand_f);
 			echo '&amp;folderid=' . $value['id'] . $user_var . $ankor . '" name="' . $value['id'] . '">' . $folder_image . " " . $folder_name . '</a>';
 			# and this is the end of the line
 			echo "</div>\n";

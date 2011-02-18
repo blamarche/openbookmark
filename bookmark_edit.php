@@ -102,7 +102,7 @@ else if ($post_title == "" || $post_url == "" || $post_icon) {
 		else {
 			$row = mysql_fetch_object ($mysql->result);
 			require_once (ABSOLUTE_PATH . "folders.php");
-			$tree = & new folder;
+			$tree = new folder;
 			$query_string = "?expand=" . implode(",", $tree->get_path_to_root ($row->childof)) . "&amp;folderid=" . $row->childof;
 			$path = $tree->print_path ($row->childof);
 			if ($post_icon && $settings['show_bookmark_icon']) {
@@ -110,7 +110,7 @@ else if ($post_title == "" || $post_url == "" || $post_icon) {
 					@unlink ($row->favicon);
 				}
 				require_once (ABSOLUTE_PATH . "favicon.php");
-				$favicon = & new favicon ($post_url);
+				$favicon = new favicon ($post_url);
 				if (isset ($favicon->favicon)) {
 					$icon = '<img src="' . $favicon->favicon . '" width="16" height="16" alt="">';
 					$query = sprintf ("UPDATE bookmark SET favicon='%s' WHERE user='%s' AND id='%d'",

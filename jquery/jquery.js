@@ -1309,7 +1309,7 @@ jQuery.extend({
 		// internal only, use is(".class")
 		has: function( t, c ) {
 			t = t.className || t;
-			return t && new RegExp("(^|\\s)" + c + "(\\s|$)").test( t );
+			return t &new RegExp("(^|\\s)" + c + "(\\s|$)").test( t );
 		}
 	},
 
