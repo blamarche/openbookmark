@@ -16,7 +16,7 @@
 - Fixed some typos in index.php and added the "My Bookmarks" link in search mode.
 
 17.05.2008, Version 0.8.11_beta
-- Added a link to use Online-Bookmarks as a real Firefox Sidebar. Many thanks to Adam Patterson.
+- Added a link to use OpenBookmark as a real Firefox Sidebar. Many thanks to Adam Patterson.
 - You can find the link "Change Password" under "Settings" from now on.
 - Added completelly new search lib. Many thanks to John-Paul Durrieu as well for other
   hints and suggestions.

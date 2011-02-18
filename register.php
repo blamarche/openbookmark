@@ -79,7 +79,7 @@ if ($reg_register) {
 			$headers = "From: noreply@yourdomain.com\r\n" .
 			$subject = 'Your registration at yourdomain.com';
 			$message  = "Hi $username,\r\n\r\n";
-			$message .= "This email confirms the creation of your Online-Bookmarks user account. ";
+			$message .= "This email confirms the creation of your OpenBookmark user account. ";
 			$message .= "Your username is '$username'. For security reasons your password is not ";
 			$message .= "included in this email. To activate your account, visit the following URL:\r\n\r\n";
 			$message .= "http://www.yourdomain.com/register.php?confirm=$key\r\n\r\n";

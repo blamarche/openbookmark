@@ -441,7 +441,7 @@ function print_footer () {
 
 	echo '<a class="footer" href="http://www.frech.ch/online-bookmarks/" target="_blank">Online-Bookmarks</a>' . "\n";
 	@readfile (ABSOLUTE_PATH . "VERSION");
-	echo ' by Stefan Frech.';
+	echo ' by Stefan Frech. <br />OpenBookmark Modification by dracflamloc @ github';
 	echo "</p>\n";
 }
 

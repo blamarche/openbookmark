@@ -137,9 +137,12 @@ class folder {
 	}
  
 	# draws the tree
-	function print_tree () {
+	function print_tree ($scriptname="") {
 		global $settings, $folder_opened, $folder_closed, $folder_opened_public, $folder_closed_public, $plus, $minus, $neutral;
 
+		if ($scriptname=="")
+			$scriptname = $_SERVER['SCRIPT_NAME'];
+		
 		# depending on whom's bookmarks are being displayed, we set some variables differently
 		if ($this->foreign_username) {
 			$root_folder_name = $this->foreign_username . "'s Bookmarks";
@@ -223,7 +226,7 @@ class folder {
 					$folderid = $this->folderid;
 				}
 				# this prints the symbol (plus or minus) with its appropriate link
-				echo '<a class="f" href="' . $_SERVER['SCRIPT_NAME'] . '?expand=' . implode(",", $expand_s);
+				echo '<a class="f flink" href="' . $scriptname . '?expand=' . implode(",", $expand_s);
 				echo '&amp;folderid=' . $folderid  . $user_var . $ankor . '">' . $symbol . '</a>';
 			}
 			else {
@@ -233,7 +236,7 @@ class folder {
 			}
 
 			# this prints the folder name with its appropriate link
-			echo '<a class="f" href="' . $_SERVER['SCRIPT_NAME'] . '?expand=' . implode(",", $expand_f);
+			echo '<a class="f flink" href="' . $scriptname . '?expand=' . implode(",", $expand_f);
 			echo '&amp;folderid=' . $value['id'] . $user_var . $ankor . '" name="' . $value['id'] . '">' . $folder_image . " " . $folder_name . '</a>';
 			# and this is the end of the line
 			echo "</div>\n";

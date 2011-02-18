@@ -3,7 +3,7 @@ if (basename ($_SERVER['SCRIPT_NAME']) == basename (__FILE__)) {
 	die ("no direct access allowed");
 }
 
-function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $show_link, $show_desc, $show_date, $show_edit, $show_move, $show_delete, $show_share, $show_header, $user = false) {
+function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $show_link, $show_desc, $show_date, $show_edit, $show_move, $show_delete, $show_share, $show_header, $user = false, $scriptname="") {
 	global $folderid,
 		$expand,
 		$settings,
@@ -12,11 +12,15 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 		$edit_image,
 		$move_image,
 		$delete_image,
-		$folder_opened,
+		$folder_opened, 
 		$folder_opened_public,
 		$date_formats,
 		$order;
 
+	
+	if ($scriptname == "")
+		$scriptname = $_SERVER['SCRIPT_NAME'];
+		
 	# print the bookmark header if enabled.
 	# Yes, it's ugly PHP code, but beautiful HTML code.
 	if ($show_header) {
@@ -67,7 +71,7 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 			$query_string = assemble_query_string ($query_data);
 			echo "\t\t" . '<div class="bmright">' . "\n";
 			echo "\t\t\t" . '<span class="date">' . "\n";
-			echo "\t\t\t\t" . '<a href="' . $_SERVER['SCRIPT_NAME'] . '?' . $query_string . '" class="f">Date ' . $img_d . '</a>' . "\n";
+			echo "\t\t\t\t" . '<a href="' . $scriptname . '?' . $query_string . '" class="f blink">Date ' . $img_d . '</a>' . "\n";
 			echo "\t\t\t" . '</span>' . "\n";
 			if ($show_edit) {
 				echo "\t\t\t" . '<img src="./images/edit.gif"   alt="" class="invisible">' . "\n";
@@ -86,7 +90,7 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 		}
 		$query_data ['order'] = $sort_t;
 		$query_string = assemble_query_string ($query_data);
-		echo "\t\t\t" . '<a href="' . $_SERVER['SCRIPT_NAME'] . '?' . $query_string . '" class="f">Title ' . $img_t . '</a>' . "\n";
+		echo "\t\t\t" . '<a href="' . $scriptname . '?' . $query_string . '" class="f blink">Title ' . $img_t . '</a>' . "\n";
 		echo "\t\t" . '</div>' . "\n";
 		echo "\t" . '</div>' . "\n\n";
 	}
@@ -115,8 +119,9 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 				$folder_image = $folder_opened;
 			}
 			$expand = $tree->get_path_to_root ($value['fid']);
-			echo "\t" . '<div style="width:' . $column_width_folder . '; float: left;">';
-			echo '<a class="f" href="./index.php?expand=' . implode (",", $expand) . '&folderid='. $value['fid'] .'#' . $value['fid'] . '">';
+			//(($column_width_folder == 0) ? "auto" : $column_width_folder)
+			echo "\t" . '<div style="width:' . "200px" . '; float: left;">';
+			echo '<a class="f flink" href="./index.php?expand=' . implode (",", $expand) . '&folderid='. $value['fid'] .'#' . $value['fid'] . '">';
 			echo $folder_image . " " . $value['name'] . "</a>";
 			echo "</div>\n";
 		}

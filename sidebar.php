@@ -90,7 +90,7 @@ class sidebar {
 <head>
 
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <title>Online-Bookmarks</title>
+        <title>OpenBookmark</title>
         <link rel="stylesheet" type="text/css" href="./style.css">
 
         <script src="./jquery/jquery.js" type="text/javascript"></script>
@@ -140,7 +140,7 @@ class sidebar {
         </head>
         <body>
 
-<p><a href="./">Back to Online-Bookmarks</a></p>
+<p><a href="./">Back to OpenBookmark</a></p>
 
 <?php
 

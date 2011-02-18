@@ -57,9 +57,9 @@ else {
 function default_settings () {
 	$settings = array (
 		'root_folder_name' => '',
-		'column_width_folder' => 400,
+		'column_width_folder' => 0,
 		'column_width_bookmark' => 0,
-		'table_height' => 400,
+		'table_height' => 0,
 		'confirm_delete' => true,
 		'open_new_window' => true,
 		'show_bookmark_description' => true,

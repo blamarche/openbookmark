@@ -39,6 +39,7 @@ h1#caption {
 	text-align: center;
 	font-family: Georgia, Times, serif;
 	background-color:#bbb;
+	display: none;
 }
 h2.caption {
 	font-weight:bold;
@@ -99,6 +100,10 @@ form.nav {
 div.folders {
 	float: left;
 	overflow: auto;
+	padding-right: 20px;
+	padding-bottom: 5px;
+	margin-right: 5px;
+	border: 1px solid #BBB;
 }
 a.f:link {
 	text-decoration: none;
@@ -183,7 +188,6 @@ p.shared {
 /* Main Content */
 div#main {
 	margin-left: 140px;
-	border: 1px solid #bbb;
 	margin-bottom: 10px;
 }
 div#content {
@@ -199,4 +203,19 @@ div#footer {
 	padding: 2px;
 	font-size: smaller;
 	font-style:italic;
+	display:none;
 }
+
+/* openbookmark additions */
+div #menu {
+	position: fixed;
+	top: 5px;
+	left: 10px;
+}
+
+h2.mnu {
+	cursor: pointer;
+}
+	h2.mnu:hover {
+		color:#eee;
+	}
