@@ -212,7 +212,7 @@ $message2 = '';
 						
 							<tr>
 								<td><a href="http://www.frech.ch/online-bookmarks/" target="_new">Newest Version available:</a></td>
-								<td><a href="http://www.frech.ch/online-bookmarks/" target="_new"><?php echo check_version (); ?></a></td>
+								<td><a href="http://www.frech.ch/online-bookmarks/" target="_new"><?php echo "disabled";//check_version (); ?></a></td>
 							</tr>
 						</table>
 						

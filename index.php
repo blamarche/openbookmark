@@ -14,24 +14,68 @@ $order = set_get_order ();
 
 ?>
 
+<?php if (!$search_mode): ?>
+<script>
+<!--
+$(document).ready(function() {
+	//setup collapsing menus
+	$(".mnu").click(function(){
+		var options = {};
+		$("#"+$(this).attr("target")).toggle('blind',options,300);
+	});
+	
+	setupFolderIntercepts();
+	setupBookmarkIntercepts();
+});
+
+function setupFolderIntercepts()
+{
+	$(".flink").click(function(){
+		var url = $(this).attr('href');
+		var folderurl=url.replace('index.php','async_folders.php');
+		var bookmarkurl=url.replace('index.php','async_bookmarks.php');
+		
+		$(".folders").load(folderurl, setupFolderIntercepts);
+		$(".bookmarks").load(bookmarkurl, setupBookmarkIntercepts);
+		
+		return false;
+	});
+}
+
+function setupBookmarkIntercepts()
+{
+	$(".blink").click(function(){
+		var url = $(this).attr('href');
+		var bookmarkurl=url.replace('index.php','async_bookmarks.php');
+		
+		$(".bookmarks").load(bookmarkurl, setupBookmarkIntercepts);
+		
+		return false;
+	});
+}
+
+-->
+</script>
+<?php endif; ?>
+
 <h1 id="caption"><?php echo $username; ?>&#039;s Online Bookmarks</h1>
 
 <!-- Wrapper starts here. -->
 <div style="min-width: <?php echo 230 + $settings['column_width_folder']; ?>px;">
 	<!-- Menu starts here. -->
 	<div id="menu">
-		<h2 class="nav">Search</h2>
-		<ul class="nav">
+		<h2 class="nav mnu" target="mnu_search">Search</h2>
+		<ul class="nav" id="mnu_search">
 		  <li>
 		  	<form action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" method="GET" class="nav">
-					<input type="text" name="search" size="8" value="<?php echo $search; ?>">
-					<input type="submit" value="Go" name="submit">
+				<input type="text" name="search" size="7" value="<?php echo $search; ?>"/>
+				<input type="submit" value="Go" name="submit"/>
 		  	</form>
 		  </li>
 		</ul>
 
-		<h2 class="nav">Bookmarks</h2>
-		<ul class="nav">
+		<h2 class="nav mnu" target="mnu_bookmarks">Bookmarks</h2>
+		<ul class="nav" id="mnu_bookmarks">
 			<?php if ($search_mode) { ?>
 			<li><a href="./index.php"><?php echo $settings['root_folder_name']; ?></a></li>
 			<?php } ?>
@@ -42,8 +86,8 @@ $order = set_get_order ();
 		  <li><a href="./shared.php">Shared Bookmarks</a></li>
 		</ul>
 	
-		<h2 class="nav">Folders</h2>
-		<ul class="nav">
+		<h2 class="nav mnu" target="mnu_folders">Folders</h2>
+		<ul class="nav" id="mnu_folders">
 			<li><a href="javascript:foldernew('<?php echo $folderid; ?>')">New Folder</a></li>
 			<li><a href="javascript:folderedit('<?php echo $folderid; ?>')">Edit Folder</a></li>
 			<li><a href="javascript:foldermove('<?php echo $folderid; ?>')">Move Folder</a></li>
@@ -51,8 +95,8 @@ $order = set_get_order ();
 			<li><a href="./index.php?expand=&amp;folderid=0">Collapse All</a></li>
 		</ul>
 	
-		<h2 class="nav">Tools</h2>
-		<ul class="nav">
+		<h2 class="nav mnu" target="mnu_tools">Tools</h2>
+		<ul class="nav" id="mnu_tools">
 			<?php if (admin_only ()) { ?>
 			<li><a href="./admin.php">Admin</a></li>
 			<?php } ?>
@@ -70,7 +114,7 @@ $order = set_get_order ();
 
 			<?php if ($search_mode): ?>
 
-			<div style="height: <?php echo $table_height; ?>; overflow:auto;">
+			<div style="height: <?php echo ($table_height == 0) ? "auto" : $table_height; ?>; overflow:auto;">
 
 				<div class="bookmark">
 					<a class="f" href="./index.php"><img src="./images/folder_open.gif" alt=""> My Bookmarks</a>
@@ -119,7 +163,7 @@ $order = set_get_order ();
 
 	<!-- Folders starts here. -->
 
-	<div class="folders" style="width: <?php echo $column_width_folder; ?>; height: <?php echo $table_height; ?>;">
+	<div class="folders" style="width: <?php echo ($column_width_folder == 0) ? "auto" : $column_width_folder; ?>; height: <?php echo ($table_height == 0) ? "auto" : $table_height; ?>;">
 
 	<?php
 	require_once (ABSOLUTE_PATH . "folders.php");
@@ -132,7 +176,7 @@ $order = set_get_order ();
 	</div>
 
 	<!-- Bookmarks starts here. -->
-	<div class="bookmarks" style="height: <?php echo $table_height; ?>;">
+	<div class="bookmarks" style="height: <?php echo ($table_height == 0) ? "auto" : $table_height; ?>;">
 
 	<?php
 

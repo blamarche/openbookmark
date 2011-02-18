@@ -83,8 +83,8 @@ function check_num_var ($varname) {
 	else if ($_POST[$varname] == 0 && $varname == "settings_column_width_bookmark") {
 		return 0;
 	}
-	else if ($_POST[$varname] < 100) {
-		return 100;
+	else if ($_POST[$varname] < 0) {
+		return 0;
 	}
 	else if ($_POST[$varname] > 800) {
 		return 800;
@@ -164,7 +164,7 @@ function check_date_format () {
 				</tr>
 			
 				<tr>
-					<td>The height in pixels of the main table<br>100 - 800 pixel</td>
+					<td>The height in pixels of the main table<br>0 (auto) - 800 pixel</td>
 					<td>
 						<input type="text" name="settings_table_height" value="<?php echo $settings['table_height']; ?>" size="5">
 					</td>
@@ -313,11 +313,11 @@ function check_date_format () {
 			<p>
 				You can add a button to your browsers "Link Bar" or "Hotlist" so that any homepage
 				can be bookmarked with one click. Title and URL of the current homepage are being preset.
-				Basically you can make Online-Bookmarks behave in two different ways showing its 
+				Basically you can make OpenBookmark behave in two different ways showing its 
 				dialog. Either a new window pops up or it shows it in the same window.
 			</p>
 			<p>
-				To show the Online-Bookmarks dialog in a new window, drag this link to the
+				To show the OpenBookmark dialog in a new window, drag this link to the
 				Link Bar.<br>
 
 				<a href="javascript:(function(){bmadd=window.open('<?php echo $js_url; ?>/bookmark_new.php?title='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href),'bmadd','toolbar=no,location=no,status=no,scrollbars=yes,resizable=yes,width=500,height=500,left=50,top=50');setTimeout(function(){bmadd.focus();});})();" title="bookmark">
@@ -325,7 +325,7 @@ function check_date_format () {
 				</a><br>
 			</p>
 			<p>
-				To open the Online-Bookmarks dialog in the same window, drag this link to the
+				To open the OpenBookmark dialog in the same window, drag this link to the
 				Link Bar.<br>
 				<a href="javascript:location.href='<?php echo $js_url; ?>/bookmark_add.php?title='+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href)" title="bookmark">
 				<img src="./images/bookmark.gif" alt="bookmark" title="bookmark">
@@ -357,7 +357,7 @@ function check_date_format () {
 				//-->
 				</script>
 				If you are using <a href="http://www.mozilla.com/firefox/">Firefox</a> as a webbrowser, you can
-				use the link below to add a bookmark which opens Online-Bookmarks as a sidebar.<br>
+				use the link below to add a bookmark which opens OpenBookmark as a sidebar.<br>
 				<b><a href="javascript:addSidebar()">Add to Sidebar</a></b>
 			</p>
 

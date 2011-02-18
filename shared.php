@@ -13,7 +13,7 @@ if (isset ($_GET['user']) && check_username ($user)) {
 	$title = $user . "&#039;s Online Bookmarks";
 }
 else {
-	$title = "Shared Online-Bookmarks";
+	$title = "Shared OpenBookmark";
 }
 
 $order = set_get_order ();
