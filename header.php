@@ -27,6 +27,7 @@ require_once (ABSOLUTE_PATH . "lib/login.php");
 		<title>OpenBookmark</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<meta http-equiv="Pragma" content="No-cache"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
 		<link rel="stylesheet" type="text/css" href="./style.css"/>
 		<link rel="shortcut icon" href="favicon.ico"/>
 		<script type="text/javascript" src="./lib/lib.js"></script>

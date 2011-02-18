@@ -14,62 +14,88 @@ $order = set_get_order ();
 
 ?>
 
-<?php if (!$search_mode): ?>
-<script>
-<!--
-var selected_folder_id = 0;
+	<?php if (!$search_mode): ?>
+	<script>
+	<!--
+	var selected_folder_id = 0;
 
-$(document).ready(function() {
-	//setup collapsing menus
-	$(".mnu").click(function(){
-		var options = {};
-		$("#"+$(this).attr("target")).toggle('blind',options,300);
+	$(document).ready(function() {
+		//setup collapsing menus
+		$(".mnu").click(function(){
+			var options = {};
+			$("#"+$(this).attr("target")).toggle('blind',options,300);
+		});
+		
+		setupFolderIntercepts();
+		setupBookmarkIntercepts();
 	});
+
+	function setupFolderIntercepts()
+	{
+		$(".folders").removeClass("loading-anim");
+		$(".bookmarks").removeClass("loading-anim");
+			
+		$(".flink").click(function(){
+			var url = $(this).attr('href');
+			var folderurl=url.replace('index.php','async_folders.php');
+			var bookmarkurl=url.replace('index.php','async_bookmarks.php');
+			
+			selected_folder_id = $(this).attr("folderid");
+			
+			$(".folders").addClass("loading-anim");
+			$(".bookmarks").addClass("loading-anim");
+			
+			$(".folders").load(folderurl, setupFolderIntercepts);
+			$(".bookmarks").load(bookmarkurl, setupBookmarkIntercepts);
+			
+			return false;
+		});
+	}
+
+	function setupBookmarkIntercepts()
+	{
+		$(".bookmarks").removeClass("loading-anim");
+		
+		$(".blink").click(function(){
+			var url = $(this).attr('href');
+			var bookmarkurl=url.replace('index.php','async_bookmarks.php');
+			
+			$(".bookmarks").addClass("loading-anim");
+			$(".bookmarks").load(bookmarkurl, setupBookmarkIntercepts);
+			
+			return false;
+		});
+	}
+	-->
+	</script>
+	<?php endif; ?>
+
+	<?php if (is_mobile_browser() && !$search_mode): ?>
+	<script>
+	<!--
+	$(document).ready(function() {
+		//make collapsible menu
+		$("#menu").hide();
+		
+		$(".flink").click(function(){
+			$("#folders").toggle('blind',{},300);
+			return false;
+		});
+	});
+	-->
+	</script>
+	<link rel="stylesheet" type="text/css" href="mobile.css" />
 	
-	setupFolderIntercepts();
-	setupBookmarkIntercepts();
-});
-
-function setupFolderIntercepts()
-{
-	$(".flink").click(function(){
-		var url = $(this).attr('href');
-		var folderurl=url.replace('index.php','async_folders.php');
-		var bookmarkurl=url.replace('index.php','async_bookmarks.php');
-		
-		selected_folder_id = $(this).attr("folderid");
-		
-		$(".folders").load(folderurl, setupFolderIntercepts);
-		$(".bookmarks").load(bookmarkurl, setupBookmarkIntercepts);
-		
-		return false;
-	});
-}
-
-function setupBookmarkIntercepts()
-{
-	$(".blink").click(function(){
-		var url = $(this).attr('href');
-		var bookmarkurl=url.replace('index.php','async_bookmarks.php');
-		
-		$(".bookmarks").load(bookmarkurl, setupBookmarkIntercepts);
-		
-		return false;
-	});
-}
-
-
-
--->
-</script>
-<?php endif; ?>
+	<?php endif; ?>
 
 <h1 id="caption"><?php echo $username; ?>&#039;s Online Bookmarks</h1>
 
 <!-- Wrapper starts here. -->
 <div style="min-width: <?php echo 230 + $settings['column_width_folder']; ?>px;">
 	<!-- Menu starts here. -->
+	<h2 id="menu-head" class="mobile nav mnu" target="menu">Actions</h2>
 	<div id="menu">
+		<div class="navblock">
 		<h2 class="nav mnu" target="mnu_search">Search</h2>
 		<ul class="nav" id="mnu_search">
 		  <li>
@@ -79,7 +105,9 @@ function setupBookmarkIntercepts()
 		  	</form>
 		  </li>
 		</ul>
+		</div>
 
+		<div class="navblock">
 		<h2 class="nav mnu" target="mnu_bookmarks">Bookmarks</h2>
 		<ul class="nav" id="mnu_bookmarks">
 			<?php if ($search_mode) { ?>
@@ -91,7 +119,9 @@ function setupBookmarkIntercepts()
 		  <li><a href="javascript:bookmarkdelete(checkselected())">Delete Bookmarks</a></li>
 		  <li><a href="./shared.php">Shared Bookmarks</a></li>
 		</ul>
+		</div>
 	
+		<div class="navblock">
 		<h2 class="nav mnu" target="mnu_folders">Folders</h2>
 		<ul class="nav" id="mnu_folders">
 			<li><a href="javascript:foldernew('<?php echo $folderid; ?>')">New Folder</a></li>
@@ -100,7 +130,9 @@ function setupBookmarkIntercepts()
 			<li><a href="javascript:folderdelete('<?php echo $folderid; ?>')">Delete Folder</a></li>
 			<li><a href="./index.php?expand=&amp;folderid=0">Collapse All</a></li>
 		</ul>
-	
+		</div>
+		
+		<div class="navblock">
 		<h2 class="nav mnu" target="mnu_tools">Tools</h2>
 		<ul class="nav" id="mnu_tools">
 			<?php if (admin_only ()) { ?>
@@ -112,6 +144,7 @@ function setupBookmarkIntercepts()
 			<li><a href="./settings.php">Settings</a></li>
 			<li><a href="./index.php?logout=1">Logout</a></li>
 		</ul>
+		</div>
 	<!-- Menu ends here. -->
 	</div>
 
@@ -168,8 +201,8 @@ function setupBookmarkIntercepts()
 			<?php else: ?>
 
 	<!-- Folders starts here. -->
-
-	<div class="folders" style="width: <?php echo ($column_width_folder == 0) ? "auto" : $column_width_folder; ?>; height: <?php echo ($table_height == 0) ? "auto" : $table_height; ?>;">
+	<h2 id="folders-head" class="mobile nav mnu" target="folders">Folders</h2>
+	<div id="folders" class="folders mnu" style="width: <?php echo ($column_width_folder == 0) ? "auto" : $column_width_folder; ?>; height: <?php echo ($table_height == 0) ? "auto" : $table_height; ?>;">
 
 	<?php
 	require_once (ABSOLUTE_PATH . "folders.php");

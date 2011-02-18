@@ -92,7 +92,7 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 		$query_data ['order'] = $sort_t;
 		$query_string = assemble_query_string ($query_data);
 		echo "\t\t\t" . '<a href="' . $scriptname . '?' . $query_string . '" class="f blink">Title ' . $img_t . '</a>' . "\n";
-		echo '<a style="font-weight:800;float:right; margin-right: 60px;" href="javascript:openAll();">[Open All]</a>';
+		echo '<a id="openAll" style="font-weight:800;float:right; margin-right: 60px;" href="javascript:openAll();">[Open All]</a>';
 		echo "\t\t" . '</div>' . "\n";
 		echo "\t" . '</div>' . "\n\n";
 	}
@@ -158,7 +158,7 @@ function list_bookmarks ($bookmarks, $show_checkbox, $show_folder, $show_icon, $
 
 		# the move column
 		if ($show_move) {
-			echo "\t\t" . '<a href="javascript:bookmarkmove(\'' . $value['id'] . '\', \'' . 'expand=' . implode (",", $expand) . '&amp;folderid=' . $folderid . '\')">';
+			echo "\t\t" . '<a class="bookmark-move" href="javascript:bookmarkmove(\'' . $value['id'] . '\', \'' . 'expand=' . implode (",", $expand) . '&amp;folderid=' . $folderid . '\')">';
 			echo sprintf ($move_image, "Move");
 			echo "</a>\n";
 		}

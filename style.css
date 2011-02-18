@@ -60,7 +60,8 @@ h2.nav {
 	margin: 0;
 	padding: 3px;
 	/* background-color:#bbb; */
-	background: url(images/grad.png) repeat-x;
+	background:#dadbdb url(images/grad.png) repeat-x;
+	width: 124px;
 }
 ul.nav {
 	border: 1px solid #bbb;
@@ -219,3 +220,14 @@ h2.mnu {
 	h2.mnu:hover {
 		color:#eee;
 	}
+	
+.loading-anim {
+	background-image: url('loading.gif');
+	background-repeat:no-repeat;
+	/*background-attachment:fixed;*/
+	background-position:center; 
+}
+
+.mobile {
+	display:none;
+}

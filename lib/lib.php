@@ -1,5 +1,19 @@
 <?php
 
+function is_mobile_browser(){
+	$device = false;
+	if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
+		$device = true;
+	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'iphone') || strstr($_SERVER['HTTP_USER_AGENT'],'iphone') ) {
+		$device = true;
+	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'blackberry') ) {
+		$device = true;
+	} else if( stristr($_SERVER['HTTP_USER_AGENT'],'android') ) {
+		$device = true;
+	}
+	return $device; 
+}
+
 ###
 ### prints a message and exits the application properly
 ###

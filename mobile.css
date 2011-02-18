@@ -1,0 +1,67 @@
+/* mobile style */
+.mobile {
+	display:block;
+}
+.navblock {
+	width: 49%;
+	float:left;
+	border: 1px solid #bbb;
+}
+h2.nav,ul.nav{
+	margin-left: 0px;
+	margin-right: 0px;
+	width: 95%;
+	border: none;
+}
+ul.nav{
+	width: 100%;
+}
+#menu-head {
+	width: auto;
+	margin-bottom: 5px;
+	float: none;
+}
+#folders-head {
+	width: auto;
+	float: none;
+}
+div #menu {
+	position: absolute;
+	top: 30px;
+	left: 5px;
+	z-index: 10;
+	width: auto;
+	background-color: white;
+}
+
+div.folders {
+	float: none;
+	padding: 5px;
+	margin-bottom: 5px;
+	margin-right: 0px;
+	width: 100%;
+}
+
+div#main {
+	margin-left: 0px;
+	margin-bottom: 5px;
+}
+
+#openAll {
+	display:none;
+}
+
+span.date {
+	display: none;
+}
+
+.bookmark-move {
+	display: none;
+}
+.bookmarks input {
+	display: none;
+}
+.bookmarks {
+	margin-top: 5px;
+	border: 1px solid #bbb;
+}
