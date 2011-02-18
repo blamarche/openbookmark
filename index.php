@@ -34,11 +34,14 @@ $order = set_get_order ();
 	{
 		$(".folders").removeClass("loading-anim");
 		$(".bookmarks").removeClass("loading-anim");
-			
+		
 		$(".flink").click(function(){
 			var url = $(this).attr('href');
 			var folderurl=url.replace('index.php','async_folders.php');
 			var bookmarkurl=url.replace('index.php','async_bookmarks.php');
+			
+			if ($("#folders").hasClass("mobile"))
+				$("#folders").toggle('blind',{},300);
 			
 			selected_folder_id = $(this).attr("folderid");
 			
@@ -77,10 +80,6 @@ $order = set_get_order ();
 		//make collapsible menu
 		$("#menu").hide();
 		
-		$(".flink").click(function(){
-			$("#folders").toggle('blind',{},300);
-			return false;
-		});
 	});
 	-->
 	</script>
@@ -202,7 +201,7 @@ $order = set_get_order ();
 
 	<!-- Folders starts here. -->
 	<h2 id="folders-head" class="mobile nav mnu" target="folders">Folders</h2>
-	<div id="folders" class="folders mnu" style="width: <?php echo ($column_width_folder == 0) ? "auto" : $column_width_folder; ?>; height: <?php echo ($table_height == 0) ? "auto" : $table_height; ?>;">
+	<div id="folders" class="folders mnu <?php echo (is_mobile_browser() ? "mobile" : ""); ?>" style="width: <?php echo ($column_width_folder == 0) ? "auto" : $column_width_folder; ?>; height: <?php echo ($table_height == 0) ? "auto" : $table_height; ?>;">
 
 	<?php
 	require_once (ABSOLUTE_PATH . "folders.php");
