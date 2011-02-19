@@ -28,6 +28,8 @@ $order = set_get_order ();
 		
 		setupFolderIntercepts();
 		setupBookmarkIntercepts();
+		
+		$('#gsearchtext').focus();
 	});
 
 	function setupFolderIntercepts()
@@ -95,8 +97,8 @@ $order = set_get_order ();
 	<!-- google search box -->
 	<div class="desktop" id="googlesearch">
 		<form method="get" action="http://www.google.com/search" target="_blank">
-			<input type="text"   name="q" size="15" maxlength="255" value="" />
-			<input type="submit" value="Google" />
+			<input type="text" id="gsearchtext"  name="q" size="15" maxlength="255" value="" />
+			<input type="submit" value="Google" onclick="$('#gsearchtext').select();" />
 		</form>
 	</div>
 	
