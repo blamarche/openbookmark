@@ -204,7 +204,11 @@ div#footer {
 	padding: 2px;
 	font-size: smaller;
 	font-style:italic;
-	display:none;
+	position: fixed;
+	bottom:0;
+	left:0;
+	z-index: 999;
+	background-color: #fff;
 }
 
 /* openbookmark additions */
@@ -231,3 +235,18 @@ h2.mnu {
 .mobile {
 	display:none;
 }
+
+#googlesearch {
+	position: relative;
+}
+	#googlesearch form {
+		position: fixed;
+		bottom:0;
+		right:0;
+		margin-right: 3px;
+		margin-bottom: 3px;
+		border: 1px solid #bbb;
+		z-index: 999;
+		padding: 3px;
+		background: #eee;
+	}

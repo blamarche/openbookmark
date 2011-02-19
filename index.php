@@ -91,11 +91,19 @@ $order = set_get_order ();
 
 <!-- Wrapper starts here. -->
 <div style="min-width: <?php echo 230 + $settings['column_width_folder']; ?>px;">
+	<!-- google search box -->
+	<div class="desktop" id="googlesearch">
+		<form method="get" action="http://www.google.com/search" target="_blank">
+			<input type="text"   name="q" size="15" maxlength="255" value="" />
+			<input type="submit" value="Google" />
+		</form>
+	</div>
+	
 	<!-- Menu starts here. -->
 	<h2 id="menu-head" class="mobile nav mnu" target="menu">Actions</h2>
 	<div id="menu">
 		<div class="navblock">
-		<h2 class="nav mnu" target="mnu_search">Search</h2>
+		<h2 class="nav mnu" target="mnu_search">Filter</h2>
 		<ul class="nav" id="mnu_search">
 		  <li>
 		  	<form action="<?php echo $_SERVER['SCRIPT_NAME']; ?>" method="GET" class="nav">

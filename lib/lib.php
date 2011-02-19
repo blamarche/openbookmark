@@ -452,12 +452,13 @@ function set_num_array ($array){
 
 function print_footer () {
 	echo '<div id="footer">';
-	object_count();
-	echo "<br>\n";
+	//object_count();
+	//echo "<br>\n";
 
 	echo '<a class="footer" href="http://www.frech.ch/online-bookmarks/" target="_blank">Online-Bookmarks</a>' . "\n";
+	echo ' by Stefan Frech. <br />OpenBookmark ';
 	@readfile (ABSOLUTE_PATH . "VERSION");
-	echo ' by Stefan Frech. <br />OpenBookmark Modification by dracflamloc @ github';
+	echo ' (C) dracflamloc @ <a href="https://github.com/dracflamloc/openbookmark">github.com</a>';
 	echo "</p>\n";
 }
 

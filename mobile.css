@@ -1,6 +1,9 @@
 /* mobile style */
+.desktop {
+	display: none;
+}
 .mobile {
-	display:block;
+	display: block;
 }
 .navblock {
 	width: 49%;
@@ -64,4 +67,7 @@ span.date {
 .bookmarks {
 	margin-top: 5px;
 	border: 1px solid #bbb;
+}
+#footer {
+	display: none;
 }
