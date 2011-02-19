@@ -29,6 +29,7 @@ require_once (ABSOLUTE_PATH . "lib/login.php");
 		<meta http-equiv="Pragma" content="No-cache"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
 		<link rel="stylesheet" type="text/css" href="./style.css"/>
+		<?php echo ($settings["theme"]!="") ? '<link rel="stylesheet" type="text/css" href="./style'.$settings["theme"].'.css" />' : ""; ?>		
 		<link rel="shortcut icon" href="favicon.ico"/>
 		<script type="text/javascript" src="./lib/lib.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>

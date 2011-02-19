@@ -84,6 +84,7 @@ $order = set_get_order ();
 	-->
 	</script>
 	<link rel="stylesheet" type="text/css" href="mobile.css" />
+	<?php echo ($settings["theme"]!="") ? '<link rel="stylesheet" type="text/css" href="./mobile'.$settings["theme"].'.css" />' : ""; ?>
 	
 	<?php endif; ?>
 

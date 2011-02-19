@@ -24,6 +24,7 @@ if (isset ($_POST['settings_apply'])) {
 		'fast_symbol'				=> set_post_bool_var ("settings_fast_symbol", false),
 		'simple_tree_mode'			=> set_post_bool_var ("settings_simple_tree_mode", false),
 		'show_public'				=> set_post_bool_var ("settings_show_public", false),
+		'theme'						=> $_POST["settings_theme"]
 	);
 
 	$query = sprintf ("UPDATE user SET
@@ -44,7 +45,8 @@ if (isset ($_POST['settings_apply'])) {
 		fast_folder_plus			='%d',
 		fast_symbol					='%d',
 		simple_tree_mode			='%d',
-		show_public					='%d'
+		show_public					='%d',
+		theme						='%s'
 		WHERE username='%s'",
 
 		$mysql->escape ($settings['root_folder_name']),
@@ -65,7 +67,9 @@ if (isset ($_POST['settings_apply'])) {
 		$settings['fast_symbol'],
 		$settings['simple_tree_mode'],
 		$settings['show_public'],
-		$mysql->escape ($username));
+		$mysql->escape ($settings["theme"]),
+		$mysql->escape ($username)
+		);
 
 	if ($mysql->query ($query)) {
 		$message = "Settings applied.";
@@ -146,6 +150,13 @@ function check_date_format () {
 					<td>Name of the root folder</td>
 					<td>
 						<input type="text" name="foldername" value="<?php echo $settings['root_folder_name']; ?>">
+					</td>
+				</tr>
+				
+				<tr>
+					<td>Theme name (ex: dark = styledark.css / mobiledark.css)</td>
+					<td>
+						<input type="text" name="settings_theme" value="<?php echo $settings['theme']; ?>">
 					</td>
 				</tr>
 			

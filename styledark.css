@@ -1,0 +1,120 @@
+/* General Settings */
+* {
+	color: #aaa;
+}
+body {
+	background-color: #222;
+}
+img {
+	border: 0px solid #FFFFFF;
+}
+a:hover {
+	color: #ff0000;
+}
+/* Caption */
+h1#caption {
+	
+	background-color:#444;
+}
+/* Menu and navigation */
+div#menu {
+	
+	background-color: black;
+}
+h2.nav {
+	
+	
+	color: #333;
+}
+ul.nav {
+	border: 1px solid #555;
+	
+}
+
+ul.nav a:hover {
+	
+	color: #ddd;
+	background-color: #777;
+}
+/* Folders section */
+div.folders {
+	
+	border: 1px solid #555;
+	background-color: black;
+}
+
+a.f:link {
+	color: #ccc;
+}
+a.f:visited {
+	color: #ccc;
+}
+a.f:hover {
+	color: #ccc;
+}
+a.f:active {
+	color: #ccc;
+}
+.bookmarkcaption a.f {
+	color: #222;
+}
+.bookmark_href {
+	color: #ccc;
+}
+#openAll {
+	color: #222;
+}
+
+span.active {
+	color: #000000;
+	background-color: #C1D2EE;
+	border:1px #316AC5 solid;
+}
+/* Bookmarks section */
+div.bookmarks {
+	
+	border-left: 1px solid #555;
+	background-color: black;
+}
+div.bookmark {
+	border-bottom: 1px solid #555;
+	background-color: #000;
+}
+div.bookmarkcaption {
+	background: url(images/grad.png) repeat-x;
+}
+div.bookmark:hover {
+	background-color: #333;
+}
+span.private {
+	background-color: #343;
+	color: #aaa;
+}
+span.public {
+	background-color: #434;
+	color: #aaa;
+}
+/* Main Content */
+
+/* Footer */
+div#footer {
+	background-color: #000;
+}
+
+/* openbookmark additions */
+
+	h2.mnu:hover {
+		color:#F00;
+	}
+	
+	#googlesearch form {
+		border: 1px solid #555;
+		background: #000;
+	}
+	
+input {
+	color:#000;
+}
+select {
+	color:#000;
+}

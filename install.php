@@ -86,6 +86,7 @@ function create_table_user () {
 	$query = "CREATE TABLE user (
 			username char(50) NOT NULL default '',
 			password char(50) NOT NULL default '',
+			theme varchar(50) NOT NULL default '',
 			admin enum('0','1') NOT NULL default '0',
 			language char(20) NOT NULL default '',
 			root_folder_name char(50) NOT NULL default 'My Bookmarks',

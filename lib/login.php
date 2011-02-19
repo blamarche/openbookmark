@@ -73,6 +73,7 @@ function default_settings () {
 		'fast_folder_plus' => true,
 		'fast_symbol' => true,
 		'simple_tree_mode' => false,
+		'theme' => ''
 		);
 	return $settings;
 }
