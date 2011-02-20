@@ -1,1 +1,4 @@
 See http://www.frech.ch/online-bookmarks/installation.php for installation instructions.
+
+If you are upgrading from an old version, please manually create the following column on the `user` table:
+	theme varchar(50) NOT NULL default ''
