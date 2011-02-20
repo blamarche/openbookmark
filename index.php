@@ -150,6 +150,7 @@ $order = set_get_order ();
 			<?php } ?>
 			<li><a href="./import.php">Import</a></li>
 			<li><a href="./export.php">Export</a></li>
+			<li><a href="./index.php?search=[dupe_check_bookmarks]">Find Duplicates</a></li>
 			<li><a href="./sidebar.php">View as Sidebar</a></li>
 			<li><a href="./settings.php">Settings</a></li>
 			<li><a href="./index.php?logout=1">Logout</a></li>
@@ -172,9 +173,17 @@ $order = set_get_order ();
 					<?php
 
 	          require_once ('./lib/BooleanSearch.php');
+			  
 	          $searchfields = array ('url', 'title', 'description');
-	
-	          $query = assemble_query ($search, $searchfields);
+			  
+			  if ($search=='[dupe_check_bookmarks]')
+				$query = "SELECT a.title,a.url,a.description,UNIX_TIMESTAMP(a.date) as timestamp,a.childof,a.id,a.favicon,a.public,
+							f.name,f.id as fid, f.public as fpublic from bookmark a 
+							inner join bookmark b on a.url=b.url and a.id<>b.id 
+							LEFT JOIN folder f ON a.childof=f.id
+							order by a.url";
+			  else
+				$query = assemble_query ($search, $searchfields);
 	
 	          if ($mysql->query ($query)) {
 	                  $bookmarks = array ();
