@@ -60,7 +60,7 @@ if (isset ($_GET['user']) && check_username ($user)) {
 
 
 	<!-- Folders starts here. -->
-	<div class="folders" style="width: <?php echo (($column_width_folder == 0) ? "auto" : $column_width_folder); ?>; height: <?php echo $table_height; ?>;">
+	<div class="folders" style="width: <?php echo (($column_width_folder == 0) ? "auto" : $column_width_folder); ?>; height: <?php echo (($table_height == 0) ? "auto" : $table_height); ?>;">
 
 	<?php
 	require_once (ABSOLUTE_PATH . "folders.php");
