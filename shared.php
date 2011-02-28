@@ -73,7 +73,7 @@ if (isset ($_GET['user']) && check_username ($user)) {
 	</div>
 
 	<!-- Bookmarks starts here. -->
-	<div class="bookmarks" style="height: <?php echo $table_height; ?>;">
+	<div class="bookmarks" style="height: <?php echo (($table_height == 0) ? "auto" : $table_height); ?>;">
 
     <?php
 
@@ -119,7 +119,7 @@ if (isset ($_GET['user']) && check_username ($user)) {
 <?php
 }
 else {
-		echo '<div id="content" style="height:' .  $table_height . ';">' . "\n";
+		echo '<div id="content" style="height:' .  (($table_height == 0) ? "auto" : $table_height) . ';">' . "\n";
         $query = "SELECT user, SUM(bookmarks) AS bookmarks, SUM(folders) AS folders FROM (
                 SELECT user, 1 AS bookmarks, 0 AS folders FROM bookmark WHERE public='1' AND deleted!='1'
                 UNION ALL
