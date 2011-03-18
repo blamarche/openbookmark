@@ -1,6 +1,11 @@
 <?php
 
 function is_mobile_browser(){
+	//manual override to show mobiel
+	if ($_GET['mobile'] == "1")
+		return true;
+	
+	//detect mobile
 	$device = false;
 	if( stristr($_SERVER['HTTP_USER_AGENT'],'ipad') ) {
 		$device = true;
