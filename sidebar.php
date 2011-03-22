@@ -92,7 +92,7 @@ class sidebar {
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <title>OpenBookmark</title>
         <link rel="stylesheet" type="text/css" href="./style.css">
-
+		
         <script src="./jquery/jquery.js" type="text/javascript"></script>
         <script src="./jquery/jquery.treeview.js" type="text/javascript"></script>
         <script type="text/javascript">
@@ -137,8 +137,9 @@ class sidebar {
                 .treeview .lastExpandable { background-image: url(./jquery/images/tv-expandable-last.gif); }
 
         </style>
+		<?php echo ($settings["theme"]!="") ? '<link rel="stylesheet" type="text/css" href="./style'.$settings["theme"].'.css" />' : ""; ?>	
         </head>
-        <body>
+        <body id="sidebarBody">
 
 <p><a href="./">Back to OpenBookmark</a></p>
 
