@@ -154,21 +154,21 @@ function check_date_format () {
 				</tr>
 				
 				<tr>
-					<td>Theme name (ex: dark = styledark.css / mobiledark.css)</td>
+					<td>Theme name (ex: 'dark' uses styledark.css / mobiledark.css)</td>
 					<td>
 						<input type="text" name="settings_theme" value="<?php echo $settings['theme']; ?>">
 					</td>
 				</tr>
 			
 				<tr>
-					<td>The width in pixels of the folder column<br>100 - 800 pixel</td>
+					<td>The width in pixels of the folder column<br>0 (auto) - 800 pixel</td>
 					<td>
 						<input type="text" name="settings_column_width_folder" value="<?php echo $settings['column_width_folder']; ?>" size="5">
 					</td>
 				</tr>
 			
 				<tr>
-					<td>The width in pixels of the bookmark column<br>100 - 800 pixel or 0 for 100%</td>
+					<td>The width in pixels of the bookmark column<br>0 (auto) - 800 pixel</td>
 					<td>
 						<input type="text" name="settings_column_width_bookmark" value="<?php echo $settings['column_width_bookmark']; ?>" size="5">
 					</td>

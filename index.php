@@ -42,8 +42,8 @@ $order = set_get_order ();
 			var folderurl=url.replace('index.php','async_folders.php');
 			var bookmarkurl=url.replace('index.php','async_bookmarks.php');
 			
-			if ($("#folders").hasClass("mobile"))
-				$("#folders").toggle('blind',{},300);
+			//if ($("#folders").hasClass("mobile"))
+			//	$("#folders").toggle('blind',{},300);
 			
 			selected_folder_id = $(this).attr("folderid");
 			
