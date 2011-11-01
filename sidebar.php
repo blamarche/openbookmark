@@ -116,8 +116,8 @@ class sidebar {
                         padding-left: 20px;
                 } /* Reset Font Size */
 
-                .treeview, .treeview ul {
-                        padding: 0;
+                .dir, .dir ul {
+			padding: 0;
                         margin: 0;
                         list-style: none;
                 }
@@ -127,7 +127,9 @@ class sidebar {
                         padding: 3px 0pt 3px 16px;
                 }
 
-                ul.dir li { padding: 2px 0 0 16px; }
+                .dir li { padding: 2px 0 0 16px; list-style: none; }
+		.dir ul { display: none; }
+		.treeview.dir ul { display: block; }
 
                 .treeview li { background: url(./jquery/images/tv-item.gif) 0 0 no-repeat; }
                 .treeview .collapsable { background-image: url(./jquery/images/tv-collapsable.gif); }
