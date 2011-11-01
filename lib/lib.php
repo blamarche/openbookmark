@@ -2,7 +2,7 @@
 
 function is_mobile_browser(){
 	//manual override to show mobiel
-	if ($_GET['mobile'] == "1")
+	if (@$_GET['mobile'] == "1")
 		return true;
 	
 	//detect mobile
