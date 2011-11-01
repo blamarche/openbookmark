@@ -412,6 +412,9 @@ if ($submit) {
 
 				# check for admin field in table
 				upgrade_table ("user", "admin", "ALTER TABLE user ADD COLUMN admin ENUM('0','1') DEFAULT 0 NOT NULL AFTER password");
+
+				# check for theme field in table
+				upgrade_table ("user", "theme", "ALTER TABLE user ADD COLUMN theme varchar(5) DEFAULT '' NOT NULL AFTER password");
 			}
 
 			############## favicon support ##############
