@@ -24,7 +24,7 @@ if (isset ($_POST['settings_apply'])) {
 		'fast_symbol'				=> set_post_bool_var ("settings_fast_symbol", false),
 		'simple_tree_mode'			=> set_post_bool_var ("settings_simple_tree_mode", false),
 		'show_public'				=> set_post_bool_var ("settings_show_public", false),
-		'theme'						=> $_POST["settings_theme"]
+		'theme'					=> set_post_string_var ("settings_theme", '')
 	);
 
 	$query = sprintf ("UPDATE user SET
@@ -67,9 +67,9 @@ if (isset ($_POST['settings_apply'])) {
 		$settings['fast_symbol'],
 		$settings['simple_tree_mode'],
 		$settings['show_public'],
-		$mysql->escape ($settings["theme"]),
+		$mysql->escape ($settings['theme']),
 		$mysql->escape ($username)
-		);
+	);
 
 	if ($mysql->query ($query)) {
 		$message = "Settings applied.";
@@ -156,7 +156,7 @@ function check_date_format () {
 				<tr>
 					<td>Theme name (ex: 'dark' uses styledark.css / mobiledark.css)</td>
 					<td>
-						<input type="text" name="settings_theme" value="<?php echo $settings['theme']; ?>">
+						<input type="text" name="settings_theme" value="<?php echo @$settings['theme']; ?>">
 					</td>
 				</tr>
 			
