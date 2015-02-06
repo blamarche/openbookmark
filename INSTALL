@@ -2,3 +2,60 @@ See http://www.frech.ch/online-bookmarks/installation.php for installation instr
 
 If you are upgrading from an old version, please manually create the following column on the `user` table:
 	theme varchar(50) NOT NULL default ''
+	
+	
+	
+------
+
+
+
+New Installation:
+
+Basically the Installation of Online-Bookmarks is not a big deal. There is an install script that guides you through the install steps. Just make sure you know your servers database credentials. If you will have troubles anyway, you can look for help in the forum, if you can't find help there and you really do not feel like testing around for hours, drop me a message with the subject "Online-Bookmarks" and I will try to help you.
+
+    Download: First of all, download the latest Version of Online-Bookmarks and unpack the tarball in your Webserver's DocumentRoot direcotry.
+    Installation: Now point your browser to the freshly created directory on your webserver. If you did it well, the URL might look like this:
+
+    http://www.yourserver.com/online-bookmarks/
+
+    If the configuration file "./config/config.php" is missing - and it most probably will if you are installing a new version - then a page will be shown linking to the install script. After answering all the questions in the install script, a config section is being displayed. Copy the section and paste it to "./config/config.php". The section looks like this. After creating the config file you must delete the install.php file prior visiting Online-Bookmarks, just for security reasons.
+    Login: Try visiting http://www.yourserver.com/online-bookmarks/ and login using the user that the install script created for you. Its username and password is "admin". The first thing you should do is changing the password. Then open the admin script and start creating other users. You can find the admin script under the menu option "Tools". This admin user and the admin script are available from Online-Bookmarks version 0.8.7_beta.
+
+
+Upgrade an existing Installation:
+
+If you have an already existing installation of Online-Bookmarks and you would like to upgrade, the install script will care about the needed steps. If you are wise, you will backup the working installation before using the new one:
+
+    Backup files: I simply rename or move the old installation of Online-Bookmarks so that the new version can take place:
+
+    # mv /path/to/online-bookmarks \
+         /path/to/online-bookmarks-backup
+
+    Backup the database: Then I backup the database content by feeding this command to the MySQL server:
+
+    # mysqldump --user=bookmarkmgr                 \
+                --password=password_of_bookmarkmgr \
+                bookmarks                          \
+                > /some/path/online-bookmarks-backup.sql
+
+    Upgrade: Now proceed with the steps from the description above. Don't forget to copy the favicons to the new directory:
+
+    # cp -a /path/to/online-bookmarks-backup/favicons/* \
+            /path/to/online-bookmarks/favicons/
+
+    Admin user: If you upgraded and using at least version 0.8.7_beta now, the new admin script will be available. However, it will only be accessible by admin users. Thus you have to define one ore more users as admins now. To do so login to your MySQL server and do the following change in your database:
+
+    # mysql -p bookmarks
+    Enter password:
+    ...
+    mysql> UPDATE user SET admin='1' WHERE username='some_user';
+
+
+Install favicon support:
+
+Since version 0.6.4 there comes a nice feature with Online-Bookmarks that allows you to display the favicon of a webpage if one exists. To make this work do the following steps:
+
+    Make sure ImageMagick is installed on your server. This is used to convert the favicon to PNG, since some browsers cannot display ICO files.
+    Edit the "./config/config.php" file and set the variables $convert and $identify to where the "convert" and "identify" executables are on your system. It might be something like "/usr/local/bin/convert" or "/usr/bin/convert".
+    Make sure that the "./favicons" directory is writable, readable and executable by the user your webserver runs as. Just chmod it to 777 and it will be.
+
